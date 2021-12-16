@@ -19,14 +19,21 @@ class App {
     // merge the new state into the old state
     this.#state = Object.assign(oldState, newState);
     // render the application
-    this.root.innerHTML = this.render();
+    this.render(this.root, this.#state);
   }
 
-  // render the application
-  render() {
+  // generate the application
+  generate(state) {
     return `
     <h1> Test </h1>
     `;
+  }
+
+  // render the application
+  render(root, state) {
+    // set the rooter element to the generated markup
+    // eslint-disable-next-line no-param-reassign
+    root.innerHTML = this.generate(state);
   }
 }
 

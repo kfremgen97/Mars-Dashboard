@@ -4,6 +4,6 @@ import App from './App';
 
 // wait for load
 window.addEventListener('load', async () => {
-  // update application state which will cause app render
-  App.updateSate(App.getState(), {});
+  // render application
+  App.render(App.root, App.getState());
 });
