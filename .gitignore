@@ -1,0 +1,11 @@
+# mac specific 
+.DS_Store
+
+# node modules
+node_modules
+
+# env file
+.env 
+
+# dist folder
+client/dist
