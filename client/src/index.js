@@ -1,4 +1,5 @@
 // imports
+import './index.css';
 import App from './App';
 
 // wait for load

@@ -1,10 +1,13 @@
+// imports
+import './App.css';
+
 // app component
 class App {
   // hold the app state
   #state = {};
 
   // app root
-  root = document.querySelector('body');
+  root = document.querySelector('#root');
 
   // get the state
   getState() {
