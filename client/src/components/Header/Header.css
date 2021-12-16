@@ -1,0 +1,10 @@
+/***** header *****/
+
+.header {
+  /* set the display tof lex with a direction of row */
+  display: flex;
+  /* align the items on the cross axis in the center */
+  align-items: center;
+  /* add padding */ 
+  padding: 2rem;
+}

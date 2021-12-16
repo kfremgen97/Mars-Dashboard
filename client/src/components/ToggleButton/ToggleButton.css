@@ -1,0 +1,21 @@
+/***** toggle button *****/ 
+
+.toggle-button {
+  display: inline-block;
+  /* remove the background  */
+  background-color: transparent;
+  /* set the border properties */
+  border: none;
+  border-radius: .5rem;
+  /* add a margin right */
+  margin-right: 2rem;
+}
+
+/***** toggle button icon *****/ 
+
+.toggle-button__icon {
+  display: inline-block; 
+  /* set height properties */
+  height: 2rem;
+  width: 2rem;
+}

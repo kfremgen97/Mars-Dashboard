@@ -1,5 +1,6 @@
 // imports
 import './App.css';
+import Header from './components/Header/Header';
 
 // app component
 class App {
@@ -25,7 +26,7 @@ class App {
   // generate the application
   generate(state) {
     return `
-    <h1> Test </h1>
+      ${Header()}
     `;
   }
 
