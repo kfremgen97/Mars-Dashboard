@@ -1,11 +1,15 @@
 // imports
 import './App.css';
+import Backdrop from './components/Backdrop/Backdrop';
 import Header from './components/Header/Header';
+import Sidebar from './components/Sidebar/Sidebar';
 
 // app component
 class App {
   // hold the app state
-  #state = {};
+  #state = {
+    roverNames: ['Curiosity', 'Opportunity', 'Spirit'],
+  };
 
   // app root
   root = document.querySelector('#root');
@@ -26,6 +30,8 @@ class App {
   // generate the application
   generate(state) {
     return `
+      ${Backdrop()}
+      ${Sidebar(state.roverNames)}
       ${Header()}
     `;
   }
