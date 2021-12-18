@@ -4,45 +4,59 @@ import Backdrop from './components/Backdrop/Backdrop';
 import Header from './components/Header/Header';
 import Sidebar from './components/Sidebar/Sidebar';
 
-// app component
-class App {
-  // hold the app state
-  #state = {
-    roverNames: ['Curiosity', 'Opportunity', 'Spirit'],
-  };
+// hold the app state
+// eslint-disable-next-line import/no-mutable-exports
+export let state = {
+  sidebarOpen: false,
+  roverNames: ['Curiosity', 'Opportunity', 'Spirit'],
+};
 
-  // app root
-  root = document.querySelector('#root');
+// app root
+export const root = document.querySelector('#root');
 
-  // get the state
-  getState() {
-    return this.#state;
+// update the state
+const updateSate = function (oldState, newState) {
+  // merge the new state into the old state
+  state = Object.assign(oldState, newState);
+  // render the application
+  // eslint-disable-next-line no-use-before-define
+  render(root, state);
+};
+
+// toggle button handler
+// a class creates a new lexical enviornment unlike a regular object literal
+// therefore we can use arrow syntax since this is scoped to the lexical environment
+// this will prevent us from having to bing this to a regular function expression on callback
+export const toggleButtonHandler = function (event) {
+  // prevent default actions
+  event.preventDefault();
+  // update the sidebar state to true
+  const sidebarState = { sidebarOpen: true };
+  updateSate(state, sidebarState);
+};
+
+// generate the application
+const generate = function (currentState) {
+  // create sidebar and backdrop
+  let sidebar = '';
+  let backdrop = '';
+
+  // generate sidebar and backdrop if sidebarOpen is true
+  if (currentState.sidebarOpen) {
+    sidebar = Sidebar(currentState.roverNames);
+    backdrop = Backdrop();
   }
 
-  // update the state
-  updateSate(oldState, newState) {
-    // merge the new state into the old state
-    this.#state = Object.assign(oldState, newState);
-    // render the application
-    this.render(this.root, this.#state);
-  }
-
-  // generate the application
-  generate(state) {
-    return `
-      ${Backdrop()}
-      ${Sidebar(state.roverNames)}
+  return `
+      ${backdrop}
+      ${sidebar}
       ${Header()}
     `;
-  }
+};
 
-  // render the application
-  render(root, state) {
-    // set the rooter element to the generated markup
-    // eslint-disable-next-line no-param-reassign
-    root.innerHTML = this.generate(state);
-  }
-}
-
-// export
-export default new App();
+// render the application
+export const render = function (rootEl, currentState) {
+  // set the rooter element to the generated markup
+  // eslint-disable-next-line no-param-reassign
+  rootEl.innerHTML = generate(currentState);
+};

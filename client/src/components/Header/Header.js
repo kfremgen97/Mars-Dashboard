@@ -3,10 +3,10 @@ import './Header.css';
 import ToggleButton from '../ToggleButton/ToggleButton';
 
 // header component
-const Header = function () {
+const Header = function (toggleButtonHandler) {
   return `
     <header class="header">
-    ${ToggleButton()}
+    ${ToggleButton(toggleButtonHandler)}
     <h1 class="heading heading--1">Mars Dashboard </h1>
     </header>
   `;
