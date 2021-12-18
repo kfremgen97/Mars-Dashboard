@@ -11,11 +11,20 @@
   margin-right: 2rem;
 }
 
-/***** toggle button icon *****/ 
+.toggle-button:hover .toggle-button__icon,
+.toggle-button:active .toggle-button__icon {
+  fill: var(--primary-dark);
+}
+
+.toggle-button:focus {
+  outline-color: var(--primary-light);
+}
 
 .toggle-button__icon {
   display: inline-block; 
   /* set height properties */
   height: 2rem;
   width: 2rem;
+  /* fill the color */
+  fill: var(--primary);
 }

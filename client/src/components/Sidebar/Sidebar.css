@@ -1,6 +1,5 @@
 /**** sidebar *****/
 
-/* sidebar */ 
 .sidebar {
   /* set the dimensions */
   height: 100vh;
@@ -24,9 +23,6 @@
 /* transition all proeprties for .2 seconds with an animation of linear */
   transition: all .2s linear;
 }
-
-
-/* side bar open */ 
 
 .sidebar--open {
     /* use the transform property to translate the element along the x axis 0 
