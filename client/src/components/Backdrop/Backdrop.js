@@ -4,7 +4,7 @@ import './Backdrop.css';
 // backdrop component
 const Backdrop = function () {
   return `
-    <div class="backdrop">
+    <div class="backdrop" onclick="backdropHandler(event)">
     </div>  
   `;
 };

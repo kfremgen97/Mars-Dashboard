@@ -32,6 +32,14 @@ export const toggleButtonHandler = function (event) {
   updateSate(state, sidebarState);
 };
 
+export const backdropHandler = function (event) {
+  // prevent default actions
+  event.preventDefault();
+  // update the sidebar state to false
+  const sidebarState = { sidebarOpen: false };
+  updateSate(state, sidebarState);
+};
+
 // generate the application
 const generate = function (currentState) {
   // create sidebar and backdrop
