@@ -1,0 +1,340 @@
+{
+  "photo_manifest": {
+    "name": "Curiosity",
+    "landing_date": "2012-08-06",
+    "launch_date": "2011-11-26",
+    "status": "active",
+    "max_sol": 3329,
+    "max_date": "2021-12-17",
+    "total_photos": 533300,
+    "photos": [
+      {
+        "sol": 3304,
+        "earth_date": "2021-11-21",
+        "total_photos": 112,
+        "cameras": [
+          "CHEMCAM",
+          "FHAZ",
+          "MARDI",
+          "MAST",
+          "NAVCAM",
+          "RHAZ"
+        ]
+      },
+      {
+        "sol": 3305,
+        "earth_date": "2021-11-22",
+        "total_photos": 12,
+        "cameras": [
+          "CHEMCAM",
+          "FHAZ",
+          "NAVCAM",
+          "RHAZ"
+        ]
+      },
+      {
+        "sol": 3306,
+        "earth_date": "2021-11-23",
+        "total_photos": 170,
+        "cameras": [
+          "CHEMCAM",
+          "FHAZ",
+          "MAST",
+          "NAVCAM",
+          "RHAZ"
+        ]
+      },
+      {
+        "sol": 3307,
+        "earth_date": "2021-11-24",
+        "total_photos": 19,
+        "cameras": [
+          "CHEMCAM",
+          "FHAZ",
+          "MAST",
+          "NAVCAM",
+          "RHAZ"
+        ]
+      },
+      {
+        "sol": 3308,
+        "earth_date": "2021-11-25",
+        "total_photos": 331,
+        "cameras": [
+          "CHEMCAM",
+          "FHAZ",
+          "MAST",
+          "NAVCAM",
+          "RHAZ"
+        ]
+      },
+      {
+        "sol": 3309,
+        "earth_date": "2021-11-26",
+        "total_photos": 187,
+        "cameras": [
+          "CHEMCAM",
+          "FHAZ",
+          "MAST",
+          "NAVCAM",
+          "RHAZ"
+        ]
+      },
+      {
+        "sol": 3310,
+        "earth_date": "2021-11-27",
+        "total_photos": 41,
+        "cameras": [
+          "CHEMCAM",
+          "FHAZ",
+          "MAST",
+          "NAVCAM",
+          "RHAZ"
+        ]
+      },
+      {
+        "sol": 3311,
+        "earth_date": "2021-11-29",
+        "total_photos": 151,
+        "cameras": [
+          "CHEMCAM",
+          "FHAZ",
+          "MAST",
+          "NAVCAM",
+          "RHAZ"
+        ]
+      },
+      {
+        "sol": 3312,
+        "earth_date": "2021-11-30",
+        "total_photos": 482,
+        "cameras": [
+          "CHEMCAM",
+          "FHAZ",
+          "MAHLI",
+          "MARDI",
+          "MAST",
+          "NAVCAM",
+          "RHAZ"
+        ]
+      },
+      {
+        "sol": 3313,
+        "earth_date": "2021-12-01",
+        "total_photos": 371,
+        "cameras": [
+          "CHEMCAM",
+          "FHAZ",
+          "MAHLI",
+          "MARDI",
+          "MAST",
+          "NAVCAM",
+          "RHAZ"
+        ]
+      },
+      {
+        "sol": 3314,
+        "earth_date": "2021-12-02",
+        "total_photos": 95,
+        "cameras": [
+          "CHEMCAM",
+          "FHAZ",
+          "MAST",
+          "NAVCAM",
+          "RHAZ"
+        ]
+      },
+      {
+        "sol": 3315,
+        "earth_date": "2021-12-03",
+        "total_photos": 430,
+        "cameras": [
+          "CHEMCAM",
+          "FHAZ",
+          "MAHLI",
+          "MAST",
+          "NAVCAM",
+          "RHAZ"
+        ]
+      },
+      {
+        "sol": 3316,
+        "earth_date": "2021-12-04",
+        "total_photos": 449,
+        "cameras": [
+          "FHAZ",
+          "MAHLI",
+          "MAST",
+          "NAVCAM",
+          "RHAZ"
+        ]
+      },
+      {
+        "sol": 3317,
+        "earth_date": "2021-12-05",
+        "total_photos": 96,
+        "cameras": [
+          "CHEMCAM",
+          "FHAZ",
+          "MAST",
+          "NAVCAM",
+          "RHAZ"
+        ]
+      },
+      {
+        "sol": 3318,
+        "earth_date": "2021-12-06",
+        "total_photos": 450,
+        "cameras": [
+          "CHEMCAM",
+          "FHAZ",
+          "MAHLI",
+          "MARDI",
+          "MAST",
+          "NAVCAM",
+          "RHAZ"
+        ]
+      },
+      {
+        "sol": 3319,
+        "earth_date": "2021-12-07",
+        "total_photos": 489,
+        "cameras": [
+          "CHEMCAM",
+          "FHAZ",
+          "MAHLI",
+          "MARDI",
+          "MAST",
+          "NAVCAM",
+          "RHAZ"
+        ]
+      },
+      {
+        "sol": 3320,
+        "earth_date": "2021-12-08",
+        "total_photos": 262,
+        "cameras": [
+          "CHEMCAM",
+          "FHAZ",
+          "MAHLI",
+          "MAST",
+          "NAVCAM",
+          "RHAZ"
+        ]
+      },
+      {
+        "sol": 3321,
+        "earth_date": "2021-12-09",
+        "total_photos": 57,
+        "cameras": [
+          "CHEMCAM",
+          "FHAZ",
+          "MAHLI",
+          "NAVCAM",
+          "RHAZ"
+        ]
+      },
+      {
+        "sol": 3322,
+        "earth_date": "2021-12-10",
+        "total_photos": 686,
+        "cameras": [
+          "CHEMCAM",
+          "FHAZ",
+          "MAHLI",
+          "MARDI",
+          "MAST",
+          "NAVCAM",
+          "RHAZ"
+        ]
+      },
+      {
+        "sol": 3323,
+        "earth_date": "2021-12-11",
+        "total_photos": 75,
+        "cameras": [
+          "CHEMCAM",
+          "FHAZ",
+          "MAHLI",
+          "NAVCAM",
+          "RHAZ"
+        ]
+      },
+      {
+        "sol": 3324,
+        "earth_date": "2021-12-12",
+        "total_photos": 378,
+        "cameras": [
+          "CHEMCAM",
+          "FHAZ",
+          "MAHLI",
+          "MAST",
+          "NAVCAM",
+          "RHAZ"
+        ]
+      },
+      {
+        "sol": 3325,
+        "earth_date": "2021-12-13",
+        "total_photos": 26,
+        "cameras": [
+          "CHEMCAM",
+          "FHAZ",
+          "NAVCAM",
+          "RHAZ"
+        ]
+      },
+      {
+        "sol": 3326,
+        "earth_date": "2021-12-14",
+        "total_photos": 457,
+        "cameras": [
+          "CHEMCAM",
+          "FHAZ",
+          "MAHLI",
+          "MARDI",
+          "MAST",
+          "NAVCAM",
+          "RHAZ"
+        ]
+      },
+      {
+        "sol": 3327,
+        "earth_date": "2021-12-15",
+        "total_photos": 15,
+        "cameras": [
+          "CHEMCAM",
+          "FHAZ",
+          "MAST",
+          "NAVCAM",
+          "RHAZ"
+        ]
+      },
+      {
+        "sol": 3328,
+        "earth_date": "2021-12-16",
+        "total_photos": 84,
+        "cameras": [
+          "CHEMCAM",
+          "FHAZ",
+          "MAHLI",
+          "MAST",
+          "NAVCAM",
+          "RHAZ"
+        ]
+      },
+      {
+        "sol": 3329,
+        "earth_date": "2021-12-17",
+        "total_photos": 106,
+        "cameras": [
+          "CHEMCAM",
+          "FHAZ",
+          "MAHLI",
+          "NAVCAM",
+          "RHAZ"
+        ]
+      }
+    ]
+  }
+}

@@ -1,31 +1,53 @@
 /***** nav *****/ 
 
-.nav {
-
-}
-
 .nav--vertical {
+    /* set the height to 100% of parent */
   height: 100%;
 }
 
-/**** nav list ****/
 
 .nav__list {
+  /* remove any list styles */
   list-style: none;
 }
 
 .nav__list--vertical {
+  /* set the height to 100% of parent */
   height: 100%;
+  /* set the display to flex with a direction of column */
   display: flex;
   flex-direction: column;
+  /* center the flex items */
   align-items: center;
   justify-content: center
 
 }
 
-/**** nav item ****/
-
 .nav__item {
   display: inline-block;
-  padding: 2rem 0;
+}
+
+.nav__link:link,
+.nav__link:visited {
+  display: inline-block;
+  /* remove text decoration */
+  text-decoration: none;
+  /* set the color */
+  color: var(--primary);
+  /* set the height and width to 100% of parent */
+  height: 100%;
+  width: 100%;
+  /* add padding */
+  padding: 2rem;
+}
+
+.nav__link:hover,
+.nav__link:active {
+  /* set the color */
+  color: var(--primary-dark);
+}
+
+.nav__link:focus {
+  /* set the color */
+  outline-color: var(--primary-light);
 }

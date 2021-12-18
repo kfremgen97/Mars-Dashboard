@@ -5,7 +5,9 @@ import './Nav.css';
 const NavItem = function (roverName) {
   return `
   <li class="nav__item">
+    <a class="nav__link" href="#${roverName} data-name="${roverName}">
     ${roverName} 
+    </a>
   </li>
   `;
 };

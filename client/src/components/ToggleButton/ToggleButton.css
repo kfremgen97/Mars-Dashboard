@@ -7,8 +7,9 @@
   /* set the border properties */
   border: none;
   border-radius: .5rem;
-  /* add a margin right */
+  /* add a margin right and padding*/
   margin-right: 2rem;
+  padding: 1rem;
   cursor: pointer;
 }
 

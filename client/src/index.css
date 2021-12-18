@@ -2,11 +2,11 @@
 
 :root {
   /* specify app colors */
-  --primary-light: #e9d5ff;
-  --primary: #a855f7;
+  --primary-light: #d8b4fe;
+  --primary: #9333ea;
   --primary-dark: #581c87;
-  --error: #f97316;
-  --success: #22c55e;
+  --error: #ea580c;
+  --success: #16a34a;
   --white: #f9fafb;
   --grey: #9ca3af;
   --black: #111827;
