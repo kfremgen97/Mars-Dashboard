@@ -2,23 +2,22 @@
 import './Nav.css';
 
 // nav item component
-const NavItem = function (roverName) {
+const NavItem = function (name) {
   return `
   <li class="nav__item">
-    <a class="nav__link" href="#${roverName} data-name="${roverName}">
-    ${roverName} 
+    <a class="nav__link" href="#${name}" data-name="${name}">
+    ${name.toUpperCase()} 
     </a>
   </li>
   `;
 };
 
 // nav component
-const Nav = function (roverNames, axis) {
+const Nav = function (names, axis) {
   return `
-  <nav class="nav ${axis === 'vertical' ? 'nav--vertical' : 'nav--horizontal'}">
+  <nav class="nav ${axis === 'vertical' ? 'nav--vertical' : 'nav--horizontal'}" onclick="navHandler(event)">
     <ul class="nav__list ${axis === 'vertical' ? 'nav__list--vertical' : 'nav__list--horizontal'}">
-      ${NavItem('Home')}
-      ${roverNames.map((roverName) => NavItem(roverName)).join('')}
+      ${names.map((name) => NavItem(name)).join('')}
     </ul>
   </nav>
   `;

@@ -3,12 +3,15 @@ import './App.css';
 import Backdrop from './components/Backdrop/Backdrop';
 import Header from './components/Header/Header';
 import Sidebar from './components/Sidebar/Sidebar';
+import Day from './components/Day/Day';
 
 // hold the app state
 // eslint-disable-next-line import/no-mutable-exports
 export let state = {
   sidebarOpen: false,
-  roverNames: ['Curiosity', 'Opportunity', 'Spirit'],
+  names: ['Home', 'Curiosity', 'Opportunity', 'Spirit'],
+  selectedRover: {},
+  day: {},
 };
 
 // app root
@@ -40,11 +43,24 @@ export const backdropHandler = function (event) {
   updateSate(state, sidebarState);
 };
 
+export const navHandler = function (event) {
+  // prevent default actions
+  event.preventDefault();
+  // make sure  the event target has a parent or itself is a nav item
+  const navItem = event.target.closest('.nav__item');
+  if (!navItem) return;
+  // get the nav link of the target
+  let navLink;
+  if (event.target.classList.contains('nav__link')) navLink = event.target;
+  else navLink = event.target.querySelector('.nav__link');
+  console.log(navLink);
+};
+
 // generate the application
 const generate = function (currentState) {
   return `
       ${currentState.sidebarOpen ? Backdrop() : ''}
-      ${Sidebar(currentState.roverNames, currentState.sidebarOpen)}
+      ${Sidebar(currentState.names, currentState.sidebarOpen)}
       ${Header()}
     `;
 };

@@ -9,7 +9,7 @@
   /* add padding */
   padding: 2rem;
   /* create a box shadow with  .2rem horziontal and 0 vertical and a blur radius of .5rem*/
-  box-shadow: .2rem 0 .5rem black;
+  box-shadow: .2rem 0 .5rem var(--black);
 
    /* set the element at a fixed position of 0 from the top and left */
   position: fixed;

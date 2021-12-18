@@ -10,4 +10,6 @@ window.addEventListener('load', async () => {
   window.toggleButtonHandler = App.toggleButtonHandler;
   // add backdrop handler to window object
   window.backdropHandler = App.backdropHandler;
+  // add nav handler to window object
+  window.navHandler = App.navHandler;
 });

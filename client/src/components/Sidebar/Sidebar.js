@@ -3,10 +3,10 @@ import './Sidebar.css';
 import Nav from '../Nav/Nav';
 
 // sidebar component
-const Sidebar = function (roverNames, sidebarOpen) {
+const Sidebar = function (names, sidebarOpen) {
   return `
   <aside class="sidebar ${sidebarOpen ? 'sidebar--open' : ''}">
-    ${Nav(roverNames, 'vertical')}
+    ${Nav(names, 'vertical')}
   </aside>
   `;
 };
