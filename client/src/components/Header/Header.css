@@ -7,4 +7,5 @@
   align-items: center;
   /* add padding */ 
   padding: 2rem;
+  border-bottom: .1rem solid var(--black);
 }

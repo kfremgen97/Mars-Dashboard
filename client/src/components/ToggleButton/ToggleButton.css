@@ -9,6 +9,7 @@
   border-radius: .5rem;
   /* add a margin right */
   margin-right: 2rem;
+  cursor: pointer;
 }
 
 .toggle-button:hover .toggle-button__icon,
