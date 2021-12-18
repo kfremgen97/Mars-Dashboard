@@ -24,9 +24,6 @@ const updateSate = function (oldState, newState) {
 };
 
 // toggle button handler
-// a class creates a new lexical enviornment unlike a regular object literal
-// therefore we can use arrow syntax since this is scoped to the lexical environment
-// this will prevent us from having to bing this to a regular function expression on callback
 export const toggleButtonHandler = function (event) {
   // prevent default actions
   event.preventDefault();
