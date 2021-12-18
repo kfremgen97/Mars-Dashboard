@@ -42,19 +42,9 @@ export const backdropHandler = function (event) {
 
 // generate the application
 const generate = function (currentState) {
-  // create sidebar and backdrop
-  let sidebar = '';
-  let backdrop = '';
-
-  // generate sidebar and backdrop if sidebarOpen is true
-  if (currentState.sidebarOpen) {
-    sidebar = Sidebar(currentState.roverNames);
-    backdrop = Backdrop();
-  }
-
   return `
-      ${backdrop}
-      ${sidebar}
+      ${currentState.sidebarOpen ? Backdrop() : ''}
+      ${Sidebar(currentState.roverNames, currentState.sidebarOpen)}
       ${Header()}
     `;
 };

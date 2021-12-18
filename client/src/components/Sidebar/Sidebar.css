@@ -1,15 +1,36 @@
 /**** sidebar *****/
 
+/* sidebar */ 
 .sidebar {
+  /* set the dimensions */
   height: 100vh;
   width: 75vw;
-  background-color: blue;
+  /* set the background  color */
+  background-color:var(--white);
+  /* add padding */
   padding: 2rem;
+  /* create a box shadow with  .2rem horziontal and 0 vertical and a blur radius of .5rem*/
   box-shadow: .2rem 0 .5rem black;
 
+   /* set the element at a fixed position of 0 from the top and left */
   position: fixed;
-  left:0;
-  bottom: 0;
+  left:0 ;
+  top: 0;
+   /* give it an z index of 5 to make it apepar above elements */
   z-index: 10;
+  /* use the transform property to translate the element along the x axis -100% 
+  this wills et teh element to the elemnts width in the left direction rendering it off screen*/
+  transform: translateX(-100%);
+/* transition all proeprties for .2 seconds with an animation of linear */
+  transition: all .2s linear;
+}
+
+
+/* side bar open */ 
+
+.sidebar--open {
+    /* use the transform property to translate the element along the x axis 0 
+    this will set the element back to where it belongs*/
+ transform: translateX(0);
 
 }
