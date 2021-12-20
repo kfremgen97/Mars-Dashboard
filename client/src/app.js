@@ -84,7 +84,7 @@ export const navHandler = async function (event) {
 const generate = function (currentState) {
   return `
       ${currentState.sidebarOpen ? Backdrop() : ''}
-      ${Sidebar(currentState.names, currentState.sidebarOpen)}
+      ${Sidebar(currentState.names, currentState.selectedName, currentState.sidebarOpen)}
       ${Header()}
       ${currentState.selectedName.toLowerCase() === 'home' ? Day(currentState.day) : ''};
     `;

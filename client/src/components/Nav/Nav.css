@@ -18,13 +18,11 @@
   display: flex;
   flex-direction: column;
   /* center the flex items */
-  align-items: center;
   justify-content: center
-
 }
 
 .nav__item {
-  display: inline-block;
+  display: block;
 }
 
 .nav__link:link,
@@ -50,4 +48,9 @@
 .nav__link:focus {
   /* set the color */
   outline-color: var(--primary-light);
+}
+
+.nav__item--active {
+  /* set the back ground color */
+  background-color: var(--primary-light);
 }
