@@ -1,6 +1,8 @@
 /***** header *****/
 
 .header {
+  /* set the grid area */
+  grid-area: header;
   /* set the display tof lex with a direction of row */
   display: flex;
   /* align the items on the cross axis in the center */

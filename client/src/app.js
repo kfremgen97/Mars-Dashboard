@@ -61,7 +61,9 @@ export const navHandler = async function (event) {
 
   try {
     // get the day info
-    const { date, title, explanation, url, media_type: mediaType } = await getDayInfo();
+    const {
+      date, title, explanation, url, media_type: mediaType,
+    } = await getDayInfo();
     // update the day state
     const dayState = {
       day: {

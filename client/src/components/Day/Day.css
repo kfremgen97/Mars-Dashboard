@@ -1,0 +1,21 @@
+/***** Day *****/
+
+.day {
+  /* set the grid area */
+  grid-area: main;
+  /* set the height to 100% of parent, this will be grid area main */
+  height: 100%;
+}
+
+.day__photo {
+  /* set the width to 100% and said the height to auto to keep pixel ratio */
+  width: 100%;
+  height: auto;
+  /* create a 1rem border of the color black */
+  border: 2rem solid var(--black);
+}
+
+.day__text {
+  /* add padding */
+  padding: 2rem;
+}
