@@ -1,5 +1,6 @@
 // imports
 import './App.css';
+import getDayInfo from './services/dayService';
 import Backdrop from './components/Backdrop/Backdrop';
 import Header from './components/Header/Header';
 import Sidebar from './components/Sidebar/Sidebar';
@@ -10,7 +11,8 @@ import Day from './components/Day/Day';
 export let state = {
   sidebarOpen: false,
   names: ['Home', 'Curiosity', 'Opportunity', 'Spirit'],
-  selectedRover: {},
+  selectedName: 'Home',
+  rover: {},
   day: {},
 };
 
@@ -43,7 +45,7 @@ export const backdropHandler = function (event) {
   updateSate(state, sidebarState);
 };
 
-export const navHandler = function (event) {
+export const navHandler = async function (event) {
   // prevent default actions
   event.preventDefault();
   // make sure  the event target has a parent or itself is a nav item
@@ -53,7 +55,27 @@ export const navHandler = function (event) {
   let navLink;
   if (event.target.classList.contains('nav__link')) navLink = event.target;
   else navLink = event.target.querySelector('.nav__link');
-  console.log(navLink);
+  // update the state with the selected name
+  const nameState = { selectedName: navLink.dataset.name };
+  updateSate(state, nameState);
+
+  try {
+    // get the day info
+    const { date, title, explanation, url, media_type: mediaType } = await getDayInfo();
+    // update the day state
+    const dayState = {
+      day: {
+        date,
+        title,
+        explanation,
+        url,
+        mediaType,
+      },
+    };
+    updateSate(state, dayState);
+  } catch (error) {
+    console.error(error);
+  }
 };
 
 // generate the application
@@ -62,6 +84,7 @@ const generate = function (currentState) {
       ${currentState.sidebarOpen ? Backdrop() : ''}
       ${Sidebar(currentState.names, currentState.sidebarOpen)}
       ${Header()}
+      ${currentState.selectedName.toLowerCase() === 'home' ? Day(currentState.day) : ''};
     `;
 };
 
