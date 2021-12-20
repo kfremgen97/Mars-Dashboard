@@ -20,7 +20,7 @@ export let state = {
 export const root = document.querySelector('#root');
 
 // update the state
-const updateSate = function (oldState, newState) {
+export const updateSate = function (oldState, newState) {
   // merge the new state into the old state
   state = Object.assign(oldState, newState);
   // render the application

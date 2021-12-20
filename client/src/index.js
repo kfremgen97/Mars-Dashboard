@@ -1,5 +1,6 @@
 // imports
 import './index.css';
+import getDayInfo from './services/dayService';
 import * as App from './App';
 
 // wait for load
@@ -12,4 +13,24 @@ window.addEventListener('load', async () => {
   window.backdropHandler = App.backdropHandler;
   // add nav handler to window object
   window.navHandler = App.navHandler;
+
+  try {
+    // get the day info
+    const {
+      date, title, explanation, url, media_type: mediaType,
+    } = await getDayInfo();
+    // update the day state
+    const dayState = {
+      day: {
+        date,
+        title,
+        explanation,
+        url,
+        mediaType,
+      },
+    };
+    App.updateSate(App.state, dayState);
+  } catch (error) {
+    console.error(error);
+  }
 });

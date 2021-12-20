@@ -8,6 +8,7 @@
 }
 
 .day__photo {
+  display: block;
   /* set the width to 100% and said the height to auto to keep pixel ratio */
   width: 100%;
   height: auto;
