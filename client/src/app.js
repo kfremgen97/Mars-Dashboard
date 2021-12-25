@@ -1,6 +1,7 @@
 // imports
 import './App.css';
 import getDayInfo from './services/dayService';
+import { getRoverInfo, getRoverPhotos } from './services/roverService';
 import Backdrop from './components/Backdrop/Backdrop';
 import Header from './components/Header/Header';
 import Sidebar from './components/Sidebar/Sidebar';
@@ -60,21 +61,59 @@ export const navHandler = async function (event) {
   updateSate(state, nameState);
 
   try {
-    // get the day info
-    const {
-      date, title, explanation, url, media_type: mediaType,
-    } = await getDayInfo();
-    // update the day state
-    const dayState = {
-      day: {
-        date,
-        title,
-        explanation,
-        url,
-        mediaType,
-      },
-    };
-    updateSate(state, dayState);
+    if (state.selectedName.toLocaleLowerCase() === 'home') {
+      // get the day info
+      const {
+        date, title, explanation, url, media_type: mediaType,
+      } = await getDayInfo();
+      // update the day state
+      const dayState = {
+        day: {
+          date,
+          title,
+          explanation,
+          url,
+          mediaType,
+        },
+      };
+      updateSate(state, dayState);
+      console.log(state);
+    } else {
+      // get the rover info
+      const {
+        photo_manifest: {
+          name, landing_date: landingDate, launch_date: launchDate, status, max_sol: maxSol,
+        },
+      } = await getRoverInfo(state.selectedName);
+      // update the rover state
+      const roverState = {
+        rover: {
+          name,
+          landingDate,
+          launchDate,
+          status,
+          maxSol,
+          photos: [],
+        },
+      };
+
+      updateSate(state, roverState);
+
+      // get the rover photos
+      const { photos } = await getRoverPhotos(state.rover.name, state.rover.maxSol);
+      // update the rover photo state
+      const roverPhotoState = {
+        rover: {
+          name,
+          landingDate,
+          launchDate,
+          status,
+          maxSol,
+          photos,
+        },
+      };
+      updateSate(state, roverPhotoState);
+    }
   } catch (error) {
     console.error(error);
   }
@@ -86,7 +125,7 @@ const generate = function (currentState) {
       ${currentState.sidebarOpen ? Backdrop() : ''}
       ${Sidebar(currentState.names, currentState.selectedName, currentState.sidebarOpen)}
       ${Header()}
-      ${currentState.selectedName.toLowerCase() === 'home' ? Day(currentState.day) : ''};
+      ${currentState.selectedName.toLowerCase() === 'home' ? Day(currentState.day) : ''}
     `;
 };
 
