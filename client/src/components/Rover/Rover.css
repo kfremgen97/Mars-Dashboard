@@ -1,0 +1,75 @@
+/***** rover *****/
+
+.rover {
+    /* set the grid area */
+    grid-area: main;
+    /* set the height to 100% of parent, this will be grid area main */
+    height: 100%;
+}
+
+.rover__photo {
+  display: block;
+  /* set the width to 100% and said the height to auto to keep pixel ratio */
+  width: 100%;
+  height: auto;
+}
+
+.rover__photo-text {
+  /* add padding */
+  padding: 2rem;
+  /* create a 2 column grid with x amount fo rows */
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  grid-auto-rows: min-content;
+  /* set the grid gap to 1rem vertically and 2rem horizontally */
+  grid-gap: 1rem 2rem;
+}
+
+.rover__photo-label {
+  /* set the font properties */
+  font-weight: 500;
+  color: var(--primary);
+}
+
+.rover__photo-value {
+  /* justify the item in the cell to the end */
+  justify-self: end;
+}
+
+
+.rover__info{
+  /* add padding */
+  padding: 2rem;
+    /* create a 2 column grid with x amount fo rows */
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  grid-auto-rows: min-content;
+    /* set teh grid gap to 1rem vertically and 2rem horizontally */
+  grid-gap: 1rem 2rem;
+}
+
+.rover__info-label {
+  font-weight: 500;
+  color: var(--primary);
+}
+
+.rover__info-value {
+  /* justify the item in the cell to the end */
+  justify-self: end;
+}
+
+.rover__info-value--status {
+  /* set the grid column */
+  grid-column: 1/-1;
+  font-size: 1.2rem;
+}
+
+.rover__info-value--active {
+  /* set the font color */
+  color: var(--error);
+}
+
+.rover__info-value--deactive {
+  /* set the font color */
+  color: var(--success);
+}

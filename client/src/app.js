@@ -6,6 +6,7 @@ import Backdrop from './components/Backdrop/Backdrop';
 import Header from './components/Header/Header';
 import Sidebar from './components/Sidebar/Sidebar';
 import Day from './components/Day/Day';
+import Rover from './components/Rover/Rover';
 
 // hold the app state
 // eslint-disable-next-line import/no-mutable-exports
@@ -93,7 +94,10 @@ export const navHandler = async function (event) {
           launchDate,
           status,
           maxSol,
-          photos: [],
+          photos: {
+            index: 0,
+            photos: [],
+          },
         },
       };
 
@@ -109,7 +113,10 @@ export const navHandler = async function (event) {
           launchDate,
           status,
           maxSol,
-          photos,
+          photos: {
+            index: 0,
+            photos,
+          },
         },
       };
       updateSate(state, roverPhotoState);
@@ -125,7 +132,7 @@ const generate = function (currentState) {
       ${currentState.sidebarOpen ? Backdrop() : ''}
       ${Sidebar(currentState.names, currentState.selectedName, currentState.sidebarOpen)}
       ${Header()}
-      ${currentState.selectedName.toLowerCase() === 'home' ? Day(currentState.day) : ''}
+      ${currentState.selectedName.toLowerCase() === 'home' ? Day(currentState.day) : Rover(currentState.rover)}
     `;
 };
 

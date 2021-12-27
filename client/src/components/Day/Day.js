@@ -3,7 +3,7 @@ import './Day.css';
 
 const DayInfo = function (day) {
   return `
-    <figure class="day__info">
+    <figure class="day__photo-container">
       <img class="day__photo" src="${day.url}" alt="${day.title}">
       <figcaption class="day__text"> ${day.explanation}</figcaption>
     </figure>  
