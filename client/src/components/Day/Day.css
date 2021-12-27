@@ -12,8 +12,6 @@
   /* set the width to 100% and said the height to auto to keep pixel ratio */
   width: 100%;
   height: auto;
-  /* create a 1rem border of the color black */
-  border: 2rem solid var(--black);
 }
 
 .day__text {

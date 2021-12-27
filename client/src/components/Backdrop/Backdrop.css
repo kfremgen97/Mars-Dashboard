@@ -13,4 +13,6 @@
   left: 0;
   /* give it an z index of 5 to make it apepar above elements */
   z-index: 5;
+  /* add blur to the background */
+  backdrop-filter: blur(1rem);
 }

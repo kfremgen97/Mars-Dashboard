@@ -66,10 +66,10 @@
 
 .rover__info-value--active {
   /* set the font color */
-  color: var(--error);
+  color: var(--success);
 }
 
 .rover__info-value--deactive {
   /* set the font color */
-  color: var(--success);
+  color: var(--error);
 }
