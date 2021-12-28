@@ -2,7 +2,7 @@
 import './ToggleButton.css';
 
 // toggle button component
-const ToggleButton = function (toggleButtonHandler) {
+const ToggleButton = function () {
   return `
     <button class="toggle-button" onclick="toggleButtonHandler(event)">
       <svg class="toggle-button__icon">

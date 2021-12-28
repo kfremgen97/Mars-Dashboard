@@ -1,0 +1,30 @@
+/***** close button *****/
+
+.close-button {
+  display: inline-block;
+  /* remove the background  */
+  background-color: transparent;
+  /* set the border properties */
+  border: none;
+  border-radius: .5rem;
+
+}
+
+.close-button__icon {
+ /* set height properties */
+  width: 2rem;
+  height: 2rem;
+  /* set the fill color */
+  fill: var(--primary);
+}
+
+.close-button:hover .close-button__icon,
+.close-button:active .close-button__icon {
+  /* set the fill color */
+  fill: var(--primary-dark);
+}
+
+.close-button:focus {
+  /* set the outline color */
+  outline-color: var(--primary-light);
+}
