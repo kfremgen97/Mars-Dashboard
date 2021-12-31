@@ -38,6 +38,7 @@
 
 
 .rover__info{
+  background-color: var(--grey-light);
   /* add padding */
   padding: 2rem;
     /* create a 2 column grid with x amount fo rows */
@@ -49,13 +50,21 @@
 }
 
 .rover__info-label {
+  display: inline-block;
   font-weight: 500;
   color: var(--primary);
 }
 
 .rover__info-value {
+  display: inline-block;
   /* justify the item in the cell to the end */
   justify-self: end;
+}
+
+.rover__info-value--name {
+  grid-column: 1/-1;
+  justify-self: center;
+  font-weight: 500;
 }
 
 .rover__info-value--status {

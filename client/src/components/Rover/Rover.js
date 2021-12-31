@@ -7,7 +7,8 @@ const RoverInfo = function (rover) {
 
   return `
   <div class="rover__info">
-    <span class="rover__info-value rover__info-value--status rover__info-value--${status}">${rover.status}</span>
+  <span class="rover__info-value rover__info-value--status rover__info-value--${status}">${rover.status}</span>
+    <span class="rover__info-value rover__info-value--name">${rover.name}</span>
     <span class="rover__info-label">Launch Date</span><span class="rover__info-value">${rover.launchDate} </span>
     <span class="rover__info-label">Landing Date</span><span class="rover__info-value">${rover.landingDate} </span>
   </div>
