@@ -94,10 +94,7 @@ export const navHandler = async function (event) {
           launchDate,
           status,
           maxSol,
-          photos: {
-            index: 0,
-            photos: [],
-          },
+          photos: [],
         },
       };
 
@@ -113,10 +110,7 @@ export const navHandler = async function (event) {
           launchDate,
           status,
           maxSol,
-          photos: {
-            index: 0,
-            photos,
-          },
+          photos,
         },
       };
       updateSate(state, roverPhotoState);
