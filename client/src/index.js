@@ -1,12 +1,11 @@
 // imports
 import './index.css';
-import getDayInfo from './services/dayService';
-import * as App from './App';
+import App from './App';
 
 // wait for load
 window.addEventListener('load', async () => {
   // render application
-  App.render(App.root, App.state);
+  App.render(App.root, App.getState());
   // add toggle button handler to window object
   window.toggleButtonHandler = App.toggleButtonHandler;
   // add backdrop handler to window object
@@ -15,27 +14,13 @@ window.addEventListener('load', async () => {
   window.navHandler = App.navHandler;
 
   try {
-    App.updateSate(App.state, { isLoading: true });
-    // get the day info
-    const {
-      date, title, explanation, url, media_type: mediaType,
-    } = await getDayInfo();
-    // update the day state
-    const dayState = {
-      day: {
-        date,
-        title,
-        explanation,
-        url,
-        mediaType,
-      },
-      isLoading: false,
-    };
-    App.updateSate(App.state, dayState);
+    App.updateSate(App.getState(), { isLoading: true });
+    // get the day data
+    const day = await App.getDayData();
+    App.updateSate(App.getState(), { day, isLoading: false });
   } catch (error) {
-    console.error(error);
     // update the state
     const completeState = { isLoading: false };
-    App.updateSate(App.state, completeState);
+    App.updateSate(App.getState(), completeState);
   }
 });

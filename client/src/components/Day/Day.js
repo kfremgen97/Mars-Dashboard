@@ -21,7 +21,7 @@ const Day = function (day, isLoading) {
       </section>
       `;
   }
-  
+
   return `
     <section class="day">
     ${DayInfo(day)}

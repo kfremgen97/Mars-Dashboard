@@ -8,142 +8,155 @@ import Sidebar from './components/Sidebar/Sidebar';
 import Day from './components/Day/Day';
 import Rover from './components/Rover/Rover';
 
-// hold the app state
-// eslint-disable-next-line import/no-mutable-exports
-export let state = {
-  sidebarOpen: false,
-  names: ['Home', 'Curiosity', 'Opportunity', 'Spirit'],
-  selectedName: 'Home',
-  rover: {},
-  day: {},
-  isLoading: false,
-};
-
-// app root
-export const root = document.querySelector('#root');
-
-// update the state
-export const updateSate = function (oldState, newState) {
-  // merge the new state into the old state
-  state = Object.assign(oldState, newState);
-  // render the application
-  // eslint-disable-next-line no-use-before-define
-  render(root, state);
-};
-
-// toggle button handler
-export const toggleButtonHandler = function (event) {
-  // prevent default actions
-  event.preventDefault();
-  // update the sidebar state to true
-  const sidebarState = { sidebarOpen: true };
-  updateSate(state, sidebarState);
-};
-
-export const backdropHandler = function (event) {
-  // prevent default actions
-  event.preventDefault();
-  // update the sidebar state to false
-  const sidebarState = { sidebarOpen: false };
-  updateSate(state, sidebarState);
-};
-
-export const navHandler = async function (event) {
-  // prevent default actions
-  event.preventDefault();
-
-  // update the state for loader
-  const loadingState = {
-    isLoading: true,
+class App {
+  // app state
+  #state = {
+    sidebarOpen: false,
+    names: ['Home', 'Curiosity', 'Opportunity', 'Spirit'],
+    selectedName: 'Home',
+    rover: {},
+    day: {},
+    isLoading: false,
   };
-  updateSate(state, loadingState);
 
-  // make sure  the event target has a parent or itself is a nav item
-  const navItem = event.target.closest('.nav__item');
-  if (!navItem) return;
-  // get the nav link of the target
-  let navLink;
-  if (event.target.classList.contains('nav__link')) navLink = event.target;
-  else navLink = event.target.querySelector('.nav__link');
-  // update the state with the selected name
-  const nameState = { selectedName: navLink.dataset.name };
-  updateSate(state, nameState);
+  // app root
+  root = document.querySelector('#root');
 
-  try {
-    if (state.selectedName.toLocaleLowerCase() === 'home') {
-      // get the day info
-      const {
-        date, title, explanation, url, media_type: mediaType,
-      } = await getDayInfo();
-      // update the day state
-      const dayState = {
-        day: {
-          date,
-          title,
-          explanation,
-          url,
-          mediaType,
-        },
-      };
-      updateSate(state, dayState);
-    } else {
-      // get the rover info
-      const {
-        photo_manifest: {
-          name, landing_date: landingDate, launch_date: launchDate, status, max_sol: maxSol,
-        },
-      } = await getRoverInfo(state.selectedName);
-      // update the rover state
-      const roverState = {
-        rover: {
-          name,
-          landingDate,
-          launchDate,
-          status,
-          maxSol,
-          photos: [],
-        },
-      };
+  // get the state
+  getState = function () {
+    return this.#state;
+  };
 
-      updateSate(state, roverState);
+  // update the state
+  updateSate = function (oldState, newState) {
+    // merge the new state into the old state
+    this.#state = Object.assign(oldState, newState);
+    // render the application
+    // eslint-disable-next-line no-use-before-define
+    this.render(this.root, this.#state);
+  };
 
-      // get the rover photos
-      const { photos } = await getRoverPhotos(state.rover.name, state.rover.maxSol);
-      // update the rover photo state
-      const roverPhotoState = {
-        rover: {
-          name,
-          landingDate,
-          launchDate,
-          status,
-          maxSol,
-          photos,
-        },
-        isLoading: false,
-      };
-      updateSate(state, roverPhotoState);
+  // toggle button handler
+  toggleButtonHandler = (event) => {
+    // prevent default actions
+    event.preventDefault();
+    // update the sidebar state to true
+    const sidebarState = { sidebarOpen: true };
+    this.updateSate(this.#state, sidebarState);
+  };
+
+  // backdrop handler
+  backdropHandler = (event) => {
+    // prevent default actions
+    event.preventDefault();
+    // update the sidebar state to false
+    const sidebarState = { sidebarOpen: false };
+    this.updateSate(this.#state, sidebarState);
+  };
+
+  // get day data
+  // eslint-disable-next-line class-methods-use-this
+  getDayData = async function () {
+    // get the day info
+    const {
+      date, title, explanation, url, media_type: mediaType,
+    } = await getDayInfo();
+
+    // return the data
+    return {
+      date,
+      title,
+      explanation,
+      url,
+      mediaType,
+    };
+  };
+
+  // get rover data
+  // eslint-disable-next-line class-methods-use-this
+  getRoverData = async function (roverName) {
+    // get the rover info
+    const {
+      photo_manifest: {
+        name, landing_date: landingDate, launch_date: launchDate, status, max_sol: maxSol,
+      },
+    } = await getRoverInfo(roverName);
+
+    // get the rover photos
+    const { photos } = await getRoverPhotos(name, maxSol);
+
+    // return the rover state
+    return {
+      name,
+      landingDate,
+      launchDate,
+      status,
+      maxSol,
+      photos,
+    };
+  };
+
+  // nav handler
+  navHandler = async (event) => {
+    // prevent default actions
+    event.preventDefault();
+
+    // update the state for loader
+    const loadingState = {
+      isLoading: true,
+    };
+    this.updateSate(this.#state, loadingState);
+
+    // make sure  the event target has a parent or itself is a nav item
+    const navItem = event.target.closest('.nav__item');
+    if (!navItem) return;
+    // get the name attribute for selected name
+    const nameState = { selectedName: navItem.dataset.name };
+    this.updateSate(this.#state, nameState);
+
+    try {
+      if (this.#state.selectedName.toLocaleLowerCase() === 'home') {
+        // get the day data
+        const day = await this.getDayData();
+        // update the state
+        this.updateSate(this.#state, { day, isLoading: false });
+        return;
+      }
+
+      // get the rover data
+      const rover = await this.getRoverData(this.#state.selectedName);
+      // update the state
+      this.updateSate(this.#state, { rover, isLoading: false });
+    } catch (error) {
+      // update the state
+      const completeState = { isLoading: false };
+      this.updateSate(this.#state, completeState);
     }
-  } catch (error) {
-    console.error(error);
-    // update the state
-    const completeState = { isLoading: false };
-    updateSate(state, completeState);
-  }
-};
+  };
 
-// generate the application
-const generate = function (currentState) {
-  return `
-      ${currentState.sidebarOpen ? Backdrop() : ''}
-      ${Sidebar(currentState.names, currentState.selectedName, currentState.sidebarOpen)}
+  // generate the application
+  // eslint-disable-next-line class-methods-use-this
+  generate = function (currentState) {
+    // get currentState values
+    const {
+      names, selectedName, rover, day, sidebarOpen, isLoading,
+    } = currentState;
+
+    return `
+      ${sidebarOpen ? Backdrop() : ''}
+      ${Sidebar(names, selectedName, sidebarOpen)}
       ${Header()}
-      ${currentState.selectedName.toLowerCase() === 'home' ? Day(currentState.day, currentState.isLoading ) : Rover(currentState.rover, currentState.isLoading)}
+      ${selectedName.toLowerCase() === 'home' ? Day(day, isLoading) : Rover(rover, isLoading)}
     `;
-};
+  };
 
-// render the application
-export const render = function (rootEl, currentState) {
-  // set the rooter element to the generated markup
-  // eslint-disable-next-line no-param-reassign
-  rootEl.innerHTML = generate(currentState);
-};
+  // render the application
+  render = function (rootEl, currentState) {
+    // set the rooter element to the generated markup
+    // eslint-disable-next-line no-param-reassign
+    rootEl.innerHTML = this.generate(currentState);
+  };
+}
+
+// export
+export default new App();
