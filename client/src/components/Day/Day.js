@@ -1,5 +1,6 @@
 // imports
 import './Day.css';
+import Loader from '../Loader/Loader';
 
 const DayInfo = function (day) {
   return `
@@ -10,7 +11,17 @@ const DayInfo = function (day) {
   `;
 };
 
-const Day = function (day) {
+const Day = function (day, isLoading) {
+  // if isLoading
+  if (isLoading) {
+    // return spinner
+    return `
+      <section class="dayr">
+    ${Loader()}
+      </section>
+      `;
+  }
+  
   return `
     <section class="day">
     ${DayInfo(day)}

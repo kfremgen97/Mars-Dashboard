@@ -16,6 +16,7 @@ export let state = {
   selectedName: 'Home',
   rover: {},
   day: {},
+  isLoading: false,
 };
 
 // app root
@@ -50,6 +51,13 @@ export const backdropHandler = function (event) {
 export const navHandler = async function (event) {
   // prevent default actions
   event.preventDefault();
+
+  // update the state for loader
+  const loadingState = {
+    isLoading: true,
+  };
+  updateSate(state, loadingState);
+
   // make sure  the event target has a parent or itself is a nav item
   const navItem = event.target.closest('.nav__item');
   if (!navItem) return;
@@ -78,7 +86,6 @@ export const navHandler = async function (event) {
         },
       };
       updateSate(state, dayState);
-      console.log(state);
     } else {
       // get the rover info
       const {
@@ -112,11 +119,15 @@ export const navHandler = async function (event) {
           maxSol,
           photos,
         },
+        isLoading: false,
       };
       updateSate(state, roverPhotoState);
     }
   } catch (error) {
     console.error(error);
+    // update the state
+    const completeState = { isLoading: false };
+    updateSate(state, completeState);
   }
 };
 
@@ -126,7 +137,7 @@ const generate = function (currentState) {
       ${currentState.sidebarOpen ? Backdrop() : ''}
       ${Sidebar(currentState.names, currentState.selectedName, currentState.sidebarOpen)}
       ${Header()}
-      ${currentState.selectedName.toLowerCase() === 'home' ? Day(currentState.day) : Rover(currentState.rover)}
+      ${currentState.selectedName.toLowerCase() === 'home' ? Day(currentState.day, currentState.isLoading ) : Rover(currentState.rover, currentState.isLoading)}
     `;
 };
 

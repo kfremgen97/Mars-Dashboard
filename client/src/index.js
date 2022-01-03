@@ -15,6 +15,7 @@ window.addEventListener('load', async () => {
   window.navHandler = App.navHandler;
 
   try {
+    App.updateSate(App.state, { isLoading: true });
     // get the day info
     const {
       date, title, explanation, url, media_type: mediaType,
@@ -28,9 +29,13 @@ window.addEventListener('load', async () => {
         url,
         mediaType,
       },
+      isLoading: false,
     };
     App.updateSate(App.state, dayState);
   } catch (error) {
     console.error(error);
+    // update the state
+    const completeState = { isLoading: false };
+    App.updateSate(App.state, completeState);
   }
 });

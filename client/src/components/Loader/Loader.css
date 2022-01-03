@@ -1,0 +1,20 @@
+/***** loader *****/
+
+.loader {
+  /* set the height to 100% of aprent element */
+  height: 100%;
+  /* setthe display to flex with center along main and cross axis */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loader__icon {
+  /* set the dimensions */
+  height: 5rem;
+  width: 5rem;
+  /* set the color */
+  fill: var(--primary);
+  /* add animation */
+  animation: spinner 2s linear infinite;
+}

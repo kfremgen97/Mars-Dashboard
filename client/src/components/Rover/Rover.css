@@ -24,15 +24,8 @@
     padding: 1rem 2rem;
 }
 
-.rover__photo-camera {
-  /* create a flex along the horizontal axis*/
-  display: flex;
-  /* jsutify the items on the maina xis in the center */
-  justify-content: center;
-  padding: 1rem 2rem;
-}
-
 .rover__photo-date--icon {
+  display: inline-block;
   /* set the dimensions */
   height: 2rem;
   width: 2rem;
@@ -41,6 +34,17 @@
   fill: var(--primary);
 }
 
+.rover__photo--date--text {
+  display: inline-block;
+}
+
+.rover__photo-camera {
+  /* create a flex along the horizontal axis*/
+  display: flex;
+  /* jsutify the items on the maina xis in the center */
+  justify-content: center;
+  padding: 1rem 2rem;
+}
 
 .rover__info{
   background-color: var(--grey-light);

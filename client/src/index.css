@@ -14,6 +14,20 @@
 
 }
 
+
+/***** animations *****/
+@keyframes spinner {
+
+  0% {
+    transform: rotate(0);
+  }
+
+  100% {
+    transform: rotate(360deg)
+  }
+  
+}
+
 /***** all elements ****/ 
 
 *,
@@ -58,3 +72,4 @@ body {
 .heading--1 {
   font-size: 2.4rem;
 }
+

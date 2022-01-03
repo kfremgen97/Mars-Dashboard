@@ -1,5 +1,6 @@
 // imports
 import './Rover.css';
+import Loader from '../Loader/Loader';
 
 const RoverInfo = function (rover) {
   // get teh rover status
@@ -36,7 +37,17 @@ const RoverPhotos = function (rover) {
   return roverPhotosString;
 };
 
-const Rover = function (rover) {
+const Rover = function (rover, isLoading) {
+  // if isLoading
+  if (isLoading) {
+    // return spinner
+    return `
+    <section class="rover">
+  ${Loader()}
+    </section>
+    `;
+  }
+
   return `
     <section class="rover">
       ${RoverInfo(rover)}
