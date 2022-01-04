@@ -7,43 +7,59 @@
     height: 100%;
 }
 
-.rover__photo-container {
+.rover__photos {
+  /* set the display to flex with a direction of column */
+  display: flex;
+  flex-direction: column;
+  /* align the items on the cross axis in the center */
+  align-items: center;
   padding: 2rem 0;
 }
 
+.rover__photo-container {
+  /* set the width of the photo container */
+  width: 95vw;
+  /* set border properties */
+  border-radius: .5rem;
+  border: .2rem solid var(--grey-light);
+  /* add a box shadow with a .5rem x and y offset and blur radius of 1rem */
+  box-shadow: .5rem .5rem 1rem var(--black);
+  padding: 0 0 2rem 0;
+  margin-bottom: 2rem;
+
+  /* create a grid with 2 columns and 3 rows */
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  grid-template-rows: repeat(3,min-content);
+  /* add a grid gap of 1rem horizontally and 2 rem vertically */
+  grid-gap: 2rem 1rem;
+}
+
 .rover__photo {
+  /* set teh grid column for element */
+  grid-column: 1/-1;
   display: block;
   /* set the width to 100% and said the height to auto to keep pixel ratio */
   width: 100%;
   height: auto;
+  border-radius: .5rem .5rem 0 0;
 }
 
-.rover__photo-date {
-    /* create a flex along the horizontal axis*/
-    display: flex;
-    padding: 1rem 2rem;
-}
-
-.rover__photo-date--icon {
+.rover__photo-label{
   display: inline-block;
   /* set the dimensions */
   height: 2rem;
   width: 2rem;
-  margin-right: 1rem;
   /* fill with color */
   fill: var(--primary);
+  /* add a margin left */
+  margin-left: 1rem;
 }
 
-.rover__photo--date--text {
+.rover__photo-value{
   display: inline-block;
-}
-
-.rover__photo-camera {
-  /* create a flex along the horizontal axis*/
-  display: flex;
-  /* jsutify the items on the maina xis in the center */
-  justify-content: center;
-  padding: 1rem 2rem;
+    /* add a margin right */
+  margin-right: 1rem;
 }
 
 .rover__info{

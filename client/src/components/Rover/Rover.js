@@ -22,19 +22,20 @@ const RoverPhotos = function (rover) {
 
   const roverPhotosString = rover.photos.map((photo) => `
     <div class="rover__photo-container">
-      <div class="rover__photo-date">
-        <svg class="rover__photo-date--icon">
-          <use href="./assets/solid.svg#calendar-alt">
-        </svg>
-      <span class="rover__photo-date--text">${photo.earth_date} </span>
-      </div>
       <img class="rover__photo" src="${photo.img_src}" alt="${rover.name}">
-      <span class="rover__photo-camera">${photo.camera.full_name}</span>
+      <svg class="rover__photo-label">
+        <use href="./assets/solid.svg#calendar-alt">
+      </svg>
+      <span class="rover__photo-value">${photo.earth_date} </span>
+      <svg class="rover__photo-label">
+        <use href="./assets/solid.svg#camera">
+      </svg>
+      <span class="rover__photo-value">${photo.camera.full_name}</span>
     </div>
     `).join('');
 
   // return rover photo string
-  return roverPhotosString;
+  return `<div class="rover__photos">${roverPhotosString} </div>`;
 };
 
 const Rover = function (rover, isLoading) {
