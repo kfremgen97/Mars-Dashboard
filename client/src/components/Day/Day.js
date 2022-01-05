@@ -4,11 +4,21 @@ import Loader from '../Loader/Loader';
 
 const DayInfo = function (day) {
   return `
-    <figure class="day__photo-container">
-      <img class="day__photo" src="${day.url}" alt="${day.title}">
-      <figcaption class="day__text"> ${day.explanation}</figcaption>
-    </figure>  
+  <div class="day__info">
+    <h3 class="heading heading--3 heading--center">
+      ${day.title}
+    </h3>
+  </div>
   `;
+};
+
+const DayPhoto = function (day) {
+  return `
+  <figure class="day__photo-container">
+    <img class="day__photo" src="${day.url}" alt="${day.title}">
+    <figcaption class="day__text"> ${day.explanation}</figcaption>
+  </figure>  
+`;
 };
 
 const Day = function (day, isLoading) {
@@ -25,6 +35,7 @@ const Day = function (day, isLoading) {
   return `
     <section class="day">
     ${DayInfo(day)}
+    ${DayPhoto(day)}
     </section>
   `;
 };

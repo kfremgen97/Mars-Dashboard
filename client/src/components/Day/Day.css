@@ -7,11 +7,31 @@
   height: 100%;
 }
 
+.day__info {
+  background-color: var(--grey-light);
+  /* add padding */
+  padding: 2rem;
+}
+
+.day__photo-container {
+  /* set the width of the photo container */
+  width: 95vw;
+  /* set border properties */
+  border-radius: .5rem;
+  border: .2rem solid var(--grey-light);
+  /* add a box shadow with a .5rem x and y offset and blur radius of 1rem */
+  box-shadow: .5rem .5rem 1rem var(--black);
+  /* add 2rem margin vertically nd auto horizontally to center */
+  margin: 2rem auto;
+}
+
 .day__photo {
   display: block;
   /* set the width to 100% and said the height to auto to keep pixel ratio */
   width: 100%;
   height: auto;
+  /* add a border radius to top corners */
+  border-radius: .5rem .5rem 0 0;
 }
 
 .day__text {
