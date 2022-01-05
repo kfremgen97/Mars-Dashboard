@@ -161,7 +161,7 @@ class App {
     return `
       ${sidebarOpen ? Backdrop() : ''}
       ${Sidebar(names, selectedName, sidebarOpen)}
-      ${Header()}
+      ${Header(names, selectedName)}
       ${selectedName.toLowerCase() === 'home' ? Day(day, error, isLoading) : Rover(rover, error, isLoading)}
     `;
   };

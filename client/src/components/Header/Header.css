@@ -14,3 +14,19 @@
   /* add padding */ 
   padding: 2rem;
 }
+
+/***** header media queries *****/
+
+/* 900 pixels */
+@media screen and (min-width: 56.25em) {
+
+  .header {
+    /* create a grid with 1 column and x amount of rows */
+    display: grid;
+    grid-template-columns: 1;
+    grid-auto-rows: min-content;
+    /* add a grid gap */
+    grid-gap: 2rem;
+    padding: 2rem 0 0 0;
+  }
+}

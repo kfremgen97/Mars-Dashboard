@@ -7,8 +7,6 @@
   /* set the border properties */
   border: none;
   border-radius: .5rem;
-  /* add a margin right and padding*/
-  margin-right: 2rem;
   padding: 1rem;
   cursor: pointer;
 }
@@ -29,4 +27,13 @@
   width: 2rem;
   /* fill the color */
   fill: var(--primary);
+}
+
+
+/***** nav media queries *****/
+
+@media screen and (min-width: 900px) {
+  .toggle-button{
+    display: none;
+  }
 }

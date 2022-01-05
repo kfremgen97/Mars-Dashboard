@@ -5,6 +5,11 @@
   height: 100%;
 }
 
+.nav--horizontal {
+  display: none;
+  width: 100%;
+}
+
 
 .nav__list {
   /* remove any list styles */
@@ -17,8 +22,13 @@
   /* set the display to flex with a direction of column */
   display: flex;
   flex-direction: column;
-  /* center the flex items */
-  justify-content: center
+  justify-content: center;
+}
+
+.nav__list--horizontal {
+  display: none;
+  /* set the width to 100% of parent */
+  width: 100%;
 }
 
 .nav__item {
@@ -30,6 +40,7 @@
   display: inline-block;
   /* remove text decoration */
   text-decoration: none;
+  text-align: center;
   /* set the color */
   color: var(--primary);
   /* set the height and width to 100% of parent */
@@ -53,4 +64,26 @@
 .nav__item--active {
   /* set the back ground color */
   background-color: var(--primary-light);
+}
+
+/***** nav media queries *****/
+
+/* media query for min width of 900 pixels */
+@media screen and (min-width: 56.25em) {
+
+  .nav--horizontal{
+    /* show the horizontal nav */
+    display: block;
+  }
+
+  .nav__list--horizontal {
+    /* set the display to flex with a direction of row*/
+    display: flex;
+  }
+
+  .nav__list--horizontal .nav__item {
+    /* set the nav item to grow to take up available space */
+    flex: 1 0 auto;
+  }
+  
 }

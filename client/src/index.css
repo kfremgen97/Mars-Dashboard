@@ -28,6 +28,20 @@
   
 }
 
+/***** utilities *****/
+
+.ml--small {
+  margin-left: 1rem;
+}
+
+.ml {
+  margin-left: 2rem;
+}
+
+.ml--big {
+  margin-left: 4rem;
+}
+
 /***** all elements ****/ 
 
 *,
