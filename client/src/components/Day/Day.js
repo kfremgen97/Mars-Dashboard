@@ -1,6 +1,7 @@
 // imports
 import './Day.css';
 import Loader from '../Loader/Loader';
+import Error from '../Error/Error';
 
 const DayInfo = function (day) {
   return `
@@ -21,13 +22,21 @@ const DayPhoto = function (day) {
 `;
 };
 
-const Day = function (day, isLoading) {
+const Day = function (day, error, isLoading) {
   // if isLoading
   if (isLoading) {
     // return spinner
     return `
-      <section class="dayr">
+      <section class="day">
     ${Loader()}
+      </section>
+      `;
+  }
+
+  if (error.showError) {
+    return `
+      <section class="day">
+    ${Error(error.dayMessage)}
       </section>
       `;
   }

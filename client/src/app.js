@@ -16,6 +16,11 @@ class App {
     selectedName: 'Home',
     rover: {},
     day: {},
+    error: {
+      showError: false,
+      dayMessage: '',
+      roverMessage: '',
+    },
     isLoading: false,
   };
 
@@ -57,43 +62,51 @@ class App {
   // get day data
   // eslint-disable-next-line class-methods-use-this
   getDayData = async function () {
-    // get the day info
-    const {
-      date, title, explanation, url, media_type: mediaType,
-    } = await getDayInfo();
+    try {
+      // get the day info
+      const {
+        date, title, explanation, url, media_type: mediaType,
+      } = await getDayInfo();
 
-    // return the data
-    return {
-      date,
-      title,
-      explanation,
-      url,
-      mediaType,
-    };
+      // return the data
+      return {
+        date,
+        title,
+        explanation,
+        url,
+        mediaType,
+      };
+    } catch (error) {
+      throw new Error('Unable to get day data');
+    }
   };
 
   // get rover data
   // eslint-disable-next-line class-methods-use-this
   getRoverData = async function (roverName) {
-    // get the rover info
-    const {
-      photo_manifest: {
-        name, landing_date: landingDate, launch_date: launchDate, status, max_sol: maxSol,
-      },
-    } = await getRoverInfo(roverName);
+    try {
+      // get the rover info
+      const {
+        photo_manifest: {
+          name, landing_date: landingDate, launch_date: launchDate, status, max_sol: maxSol,
+        },
+      } = await getRoverInfo(roverName);
 
-    // get the rover photos
-    const { photos } = await getRoverPhotos(name, maxSol);
+      // get the rover photos
+      const { photos } = await getRoverPhotos(name, maxSol);
 
-    // return the rover state
-    return {
-      name,
-      landingDate,
-      launchDate,
-      status,
-      maxSol,
-      photos,
-    };
+      // return the rover state
+      return {
+        name,
+        landingDate,
+        launchDate,
+        status,
+        maxSol,
+        photos,
+      };
+    } catch (error) {
+      throw new Error('Unable to get rover data');
+    }
   };
 
   // nav handler
@@ -101,11 +114,9 @@ class App {
     // prevent default actions
     event.preventDefault();
 
-    // update the state for loader
-    const loadingState = {
-      isLoading: true,
-    };
-    this.updateSate(this.#state, loadingState);
+    // update the state for loader and remove show error
+    const errorState = { showError: false, dayMessage: '', roverMessage: '' };
+    this.updateSate(this.#state, { error: errorState, isLoading: true });
 
     // make sure  the event target has a parent or itself is a nav item
     const navItem = event.target.closest('.nav__item');
@@ -128,9 +139,14 @@ class App {
       // update the state
       this.updateSate(this.#state, { rover, isLoading: false });
     } catch (error) {
+      // set show error
+      errorState.showError = true;
+      // set the error message
+      if (this.#state.selectedName.toLocaleLowerCase() === 'home') errorState.dayMessage = error.message;
+      else errorState.roverMessage = error.message;
+
       // update the state
-      const completeState = { isLoading: false };
-      this.updateSate(this.#state, completeState);
+      this.updateSate(this.#state, { error: errorState, isLoading: false });
     }
   };
 
@@ -139,14 +155,14 @@ class App {
   generate = function (currentState) {
     // get currentState values
     const {
-      names, selectedName, rover, day, sidebarOpen, isLoading,
+      names, selectedName, rover, day, sidebarOpen, isLoading, error,
     } = currentState;
 
     return `
       ${sidebarOpen ? Backdrop() : ''}
       ${Sidebar(names, selectedName, sidebarOpen)}
       ${Header()}
-      ${selectedName.toLowerCase() === 'home' ? Day(day, isLoading) : Rover(rover, isLoading)}
+      ${selectedName.toLowerCase() === 'home' ? Day(day, error, isLoading) : Rover(rover, error, isLoading)}
     `;
   };
 

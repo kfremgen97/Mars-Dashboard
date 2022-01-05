@@ -1,6 +1,7 @@
 // imports
 import './Rover.css';
 import Loader from '../Loader/Loader';
+import Error from '../Error/Error';
 
 const RoverInfo = function (rover) {
   // get teh rover status
@@ -38,7 +39,7 @@ const RoverPhotos = function (rover) {
   return `<div class="rover__photos">${roverPhotosString} </div>`;
 };
 
-const Rover = function (rover, isLoading) {
+const Rover = function (rover, error, isLoading) {
   // if isLoading
   if (isLoading) {
     // return spinner
@@ -47,6 +48,14 @@ const Rover = function (rover, isLoading) {
   ${Loader()}
     </section>
     `;
+  }
+
+  if (error.showError) {
+    return `
+       <section class="day">
+     ${Error(error.roverMessage)}
+       </section>
+       `;
   }
 
   return `

@@ -77,6 +77,14 @@ body {
   font-size: 2rem;
 }
 
+.heading--5 {
+  font-size: 1.8rem;
+}
+
+.heading--error {
+  color: var(--error);
+}
+
 .heading--center {
   text-align: center;
 }
