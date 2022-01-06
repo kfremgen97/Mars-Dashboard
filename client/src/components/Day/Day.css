@@ -30,8 +30,8 @@
   /* set the width to 100% and said the height to auto to keep pixel ratio */
   width: 100%;
   height: auto;
-  /* add a border radius to top corners */
-  border-radius: .5rem .5rem 0 0;
+  /* add a border radius */
+  border-radius: .5rem 
 }
 
 .day__text {
@@ -43,15 +43,46 @@
 
 /* media query for min width of 600 */
 @media screen and (min-width: 37.5em) {
-  .day__photo-container {
-  /* create a grid with 2 columns */
-  display: grid;
-  grid-template-columns: 50% 1fr;
-  /* add a grid gap of 1rem horizontally and 2 rem vertically */
-  grid-gap: 2rem 1rem;
+
+  .day__photo-container:before,
+  .day__photo-container:after { 
+    /* clearfix hack for floating child elements */
+    content: ''; 
+    display: block;
+    clear: both; 
   }
 
   .day__photo {
-    border-radius: .5rem;
+    /* set the widht to 50% */
+    width: 50%;
+    /* float to the elft so text wraps around */
+    float: left;
+    margin: 0 2rem 2rem 0;
   }
+
+}
+
+/* media query for min width of 600 */
+@media screen and (min-width: 900px) {
+
+  .day__photo-container:before,
+  .day__photo-container:after { 
+    /* remove clearfix hack */
+    content: none; 
+    display: none;
+    clear: none; 
+  }
+
+  .day__photo-container {
+    /* create a grid with 2 columns */
+    display: grid;
+    grid-template-columns: 50% 1fr;
+    /* add a grid gap of 1rem horizontally and 2 rem vertically */
+    grid-gap: 2rem 1rem;
+  }
+
+  .day__photo {
+    width: 100%;
+    margin: 0;
+  } 
 }
