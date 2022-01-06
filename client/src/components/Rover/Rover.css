@@ -7,60 +7,6 @@
     height: 100%;
 }
 
-.rover__photos {
-  /* set the display to flex with a direction of column */
-  display: flex;
-  flex-direction: column;
-  /* align the items on the cross axis in the center */
-  align-items: center;
-  padding: 2rem 0;
-}
-
-.rover__photo-container {
-  /* set the width of the photo container */
-  width: 95vw;
-  /* set border properties */
-  border-radius: .5rem;
-  border: .2rem solid var(--grey-light);
-  /* add a box shadow with a .5rem x and y offset and blur radius of 1rem */
-  box-shadow: .5rem .5rem 1rem var(--black);
-  padding: 0 0 2rem 0;
-  margin-bottom: 2rem;
-
-  /* create a grid with 2 columns and 3 rows */
-  display: grid;
-  grid-template-columns: max-content 1fr;
-  grid-template-rows: repeat(3,min-content);
-  /* add a grid gap of 1rem horizontally and 2 rem vertically */
-  grid-gap: 2rem 1rem;
-}
-
-.rover__photo {
-  /* set teh grid column for element */
-  grid-column: 1/-1;
-  display: block;
-  /* set the width to 100% and said the height to auto to keep pixel ratio */
-  width: 100%;
-  height: auto;
-  border-radius: .5rem .5rem 0 0;
-}
-
-.rover__photo-label{
-  display: inline-block;
-  /* set the dimensions */
-  height: 2rem;
-  width: 2rem;
-  /* fill with color */
-  fill: var(--primary);
-  /* add a margin left */
-  margin-left: 1rem;
-}
-
-.rover__photo-value{
-  display: inline-block;
-    /* add a margin right */
-  margin-right: 1rem;
-}
 
 .rover__info{
   background-color: var(--grey-light);
@@ -108,4 +54,136 @@
   color: var(--error);
 }
 
+.rover__photos {
+  /* set the display to flex with a direction of column */
+  display: flex;
+  flex-direction: column;
+  /* align the items on the cross axis in the center */
+  align-items: center;
+  padding: 2rem 0;
+}
+
+.rover__photo-container {
+  /* set the width of the photo container */
+  width: 95vw;
+  /* set border properties */
+  border-radius: .5rem;
+  border: .2rem solid var(--grey-light);
+  /* add a box shadow with a .5rem x and y offset and blur radius of 1rem */
+  box-shadow: .5rem .5rem 1rem var(--black);
+  padding: 0 0 2rem 0;
+  margin-bottom: 2rem;
+
+  /* create a grid with 2 columns and 3 rows */
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  grid-template-rows: repeat(3,min-content);
+  /* add a grid gap of 1rem horizontally and 2 rem vertically */
+  grid-gap: 2rem 1rem;
+}
+
+.rover__photo {
+  /* set the grid column for element */
+  grid-column: 1/-1;
+  display: block;
+  /* set the width to 100% and said the height to auto to keep pixel ratio */
+  width: 100%;
+  height: auto;
+  border-radius: .5rem .5rem 0 0;
+}
+
+.rover__photo-label{
+  display: inline-block;
+  /* set the dimensions */
+  height: 2rem;
+  width: 2rem;
+  /* fill with color */
+  fill: var(--primary);
+  /* add a margin left */
+  margin-left: 1rem;
+}
+
+.rover__photo-value{
+  display: inline-block;
+    /* add a margin right */
+  margin-right: 1rem;
+}
+
 /***** media queries for rover *****/
+
+/* media query for min width of 600 */
+@media screen and (min-width: 37.5em) {
+
+
+.rover__photo-container {
+
+  /* create a grid with 3 columns and 2 rows */
+  display: grid;
+  grid-template-columns: 50% max-content 1fr;
+  grid-template-rows: repeat(2,min-content);
+  /* add a grid gap of 1rem horizontally and 2 rem vertically */
+  grid-gap: 2rem 1rem;
+  padding: 0;
+}
+
+.rover__photo {
+  /* set the grid column and row for element */
+  grid-column: 1/2;
+  grid-row: 1/-1;
+  /* set the border radius for left corners */
+  border-radius: .5rem 0 0 .5rem;
+}
+
+.rover__photo-label,
+.rover__photo-value{
+  /* align the items in the center of there cell vertically */
+ align-self: center;
+}
+}
+
+/* 900 pixels */
+@media screen and (min-width: 56.25em) {
+
+  .rover__photos {
+    /* set the display to flex with a direction of column */
+    display: grid;
+    /* create a adynamic grid*/
+    grid-template-columns: repeat(auto-fill, minmax(30rem,1fr));
+    grid-auto-rows: min-content;
+    grid-gap: 4rem 3rem;
+    /* align the items to the start of the cells vertically */
+    align-items: start;
+    /* update margin and paddings */
+    padding: 2rem;
+    margin: 0;
+  }
+
+  .rover__photo-container {
+    /* set the width of the photo container to 100% parent i.e teh grid cell */
+    width: 100%;
+    padding: 0 0 2rem 0;
+    margin: 0;
+  
+    /* create a grid with 2 columns and 3 rows */
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    grid-template-rows: repeat(3,min-content);
+    /* add a grid gap of 1rem horizontally and 2 rem vertically */
+    grid-gap: 2rem 1rem;
+  }
+
+
+  .rover__photo {
+    /* set the grid column for element */
+    grid-column: 1/-1;
+    grid-row: auto;
+    display: block;
+    border-radius: .5rem .5rem 0 0;
+  }
+  
+  .rover__photo-label,
+  .rover__photo-value{
+    /* align the items in the center of there cell vertically */
+   align-self: stretch;
+  }
+}
