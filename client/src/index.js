@@ -4,6 +4,18 @@ import App from './App';
 
 // wait for load
 window.addEventListener('load', async () => {
+  // add service worker if browser supports it
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      // register service worker
+      navigator.serviceWorker.register('/service-worker.js').then((registration) => {
+        console.log('SW registered: ', registration);
+      }).catch((registrationError) => {
+        console.error('SW registration failed: ', registrationError);
+      });
+    });
+  }
+
   // render application
   App.render(App.root, App.getState());
   // add toggle button handler to window object

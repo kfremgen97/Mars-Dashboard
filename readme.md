@@ -2,19 +2,21 @@
 
 This application consist of a dashboard that consumes the NASA API that will allow the user to select which rover's information they want to view.
 
+## Getting the project running
 
+There are a numebr of steps required to get the project running after cloning or downloading the project.
 
-### To run the project
+Below are the steps to run the project:
 
-There are a number of steps required to get the project running after cloning or downloading the project.
+1. Add a .env file
+    - Create a [NASA API KEY](https://api.nasa.gov/) 
+      - Add your key as a variable ( NASA_API_KEY = ******* api key ********** )
 
-1. Install required dependencies via ( npm install )
-2. Build the project via (npm run webpack-dev)
-3. After the project is built start the server via ( npm run server-start )
+2. Install required dependencies via ( npm install )
 
-As of right now:
-- The front end and back end are running on two different servers.
-- To access the front end http://localhost:8000/
-- To access the back end http://localhost:8080/
+3. Build the project via (npm run webpack-prod)
+    - Adds offline fucntionality via webpacks ervce workers
 
-**There is no implementation besdies showing and hiding side menu from left toggle button**
+4. After the project is built start the server via ( npm run server-start )
+    - There srver starts on localhost://8080
+
