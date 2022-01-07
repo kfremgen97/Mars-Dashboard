@@ -16,8 +16,16 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 /**  routes */
 
-// test
+// Serve files
+app.use(express.static('client/dist'));
+
+// Root page
 app.get('/', (req, res) => {
+  res.sendFile('index.html');
+});
+
+// test
+app.get('/api/test', (req, res) => {
   res.send(JSON.stringify({
     application: 'Mars Dashboard',
     description: 'This application consist of a dashboard that consumes the NASA API that will allow the user to select which rover\'s information they want to view.',
