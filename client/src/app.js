@@ -64,18 +64,9 @@ class App {
   getDayData = async function () {
     try {
       // get the day info
-      const {
-        date, title, explanation, url, media_type: mediaType,
-      } = await getDayInfo();
-
+      const dayData = await getDayInfo();
       // return the data
-      return {
-        date,
-        title,
-        explanation,
-        url,
-        mediaType,
-      };
+      return dayData;
     } catch (error) {
       throw new Error('Unable to get day data');
     }
@@ -87,15 +78,13 @@ class App {
     try {
       // get the rover info
       const {
-        photo_manifest: {
-          name, landing_date: landingDate, launch_date: launchDate, status, max_sol: maxSol,
-        },
+        name, landingDate, launchDate, status, maxSol,
       } = await getRoverInfo(roverName);
 
       // get the rover photos
       const { photos } = await getRoverPhotos(name, maxSol);
 
-      // return the rover state
+      // return the rover data
       return {
         name,
         landingDate,
