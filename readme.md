@@ -2,6 +2,11 @@
 
 This application consist of a dashboard that consumes the NASA API that will allow the user to select which rover's information they want to view.
 
+## Project architecture
+
+- This project follows a functional programming paradigme
+- This project uses a React like component architecture with using vanilla JS
+
 ## Getting the project running
 
 There are a numebr of steps required to get the project running after cloning or downloading the project.
