@@ -105,7 +105,7 @@ class App {
         photos,
       };
     } catch (error) {
-      throw new Error('Unable to get rover data');
+      throw new Error(error.message);
     }
   };
 
