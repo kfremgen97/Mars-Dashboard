@@ -1,5 +1,6 @@
 // imports
 import './App.css';
+import Immutable from 'immutable';
 import getDayInfo from './services/dayService';
 import { getRoverInfo, getRoverPhotos } from './services/roverService';
 import Backdrop from './components/Backdrop/Backdrop';
@@ -10,19 +11,19 @@ import Rover from './components/Rover/Rover';
 
 class App {
   // app state
-  #state = {
+  #state = Immutable.Map({
     sidebarOpen: false,
-    names: ['Home', 'Curiosity', 'Opportunity', 'Spirit'],
+    names: Immutable.List(['Home', 'Curiosity', 'Opportunity', 'Spirit']),
     selectedName: 'Home',
-    rover: {},
-    day: {},
-    error: {
+    rover: Immutable.Map({}),
+    day: Immutable.Map({}),
+    error: Immutable.Map({
       showError: false,
       dayMessage: '',
       roverMessage: '',
-    },
+    }),
     isLoading: false,
-  };
+  });
 
   // app root
   root = document.querySelector('#root');
@@ -35,10 +36,10 @@ class App {
   // update the state
   updateSate = function (oldState, newState) {
     // merge the new state into the old state
-    this.#state = Object.assign(oldState, newState);
+    this.#state = oldState.merge(newState);
     // render the application
     // eslint-disable-next-line no-use-before-define
-    this.render(this.root, this.#state);
+    this.render(this.root, this.#state.toJS());
   };
 
   // toggle button handler

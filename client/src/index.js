@@ -15,7 +15,7 @@ window.addEventListener('load', async () => {
   }
 
   // render application
-  App.render(App.root, App.getState());
+  App.render(App.root, App.getState().toJS());
   // add toggle button handler to window object
   window.toggleButtonHandler = App.toggleButtonHandler;
   // add backdrop handler to window object
