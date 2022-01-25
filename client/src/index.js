@@ -14,6 +14,7 @@ window.addEventListener('load', async () => {
     });
   }
 
+  console.log(App);
   // render application
   App.render(App.root, App.getState().toJS());
   // add toggle button handler to window object

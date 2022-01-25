@@ -6,6 +6,8 @@
   ],
   "plugins": [
     // Used for polyfilling things such as promises
-    "@babel/plugin-transform-runtime"
+    "@babel/plugin-transform-runtime",
+    // Used for class proeprties
+    "@babel/plugin-proposal-class-properties"
   ]
 }

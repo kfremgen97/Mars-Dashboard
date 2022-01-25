@@ -29,18 +29,18 @@ class App {
   root = document.querySelector('#root');
 
   // get the state
-  getState = function () {
+  getState() {
     return this.#state;
-  };
+  }
 
   // update the state
-  updateSate = function (oldState, newState) {
+  updateSate(oldState, newState) {
     // merge the new state into the old state
     this.#state = oldState.merge(newState);
     // render the application
     // eslint-disable-next-line no-use-before-define
     this.render(this.root, this.#state.toJS());
-  };
+  }
 
   // toggle button handler
   toggleButtonHandler = (event) => {
@@ -62,7 +62,7 @@ class App {
 
   // get day data
   // eslint-disable-next-line class-methods-use-this
-  getDayData = async function () {
+  async getDayData() {
     try {
       // get the day info
       const dayData = await getDayInfo();
@@ -71,11 +71,11 @@ class App {
     } catch (error) {
       throw new Error('Unable to get day data');
     }
-  };
+  }
 
   // get rover data
   // eslint-disable-next-line class-methods-use-this
-  getRoverData = async function (roverName) {
+  async getRoverData(roverName) {
     try {
       // get the rover info
       const {
@@ -97,7 +97,7 @@ class App {
     } catch (error) {
       throw new Error(error.message);
     }
-  };
+  }
 
   // nav handler
   navHandler = async (event) => {
@@ -115,8 +115,10 @@ class App {
     const nameState = { selectedName: navItem.dataset.name };
     this.updateSate(this.#state, nameState);
 
+    const { selectedName } = this.#state.toJS();
+  
     try {
-      if (this.#state.selectedName.toLocaleLowerCase() === 'home') {
+      if (selectedName.toLowerCase() === 'home') {
         // get the day data
         const day = await this.getDayData();
         // update the state
@@ -125,14 +127,14 @@ class App {
       }
 
       // get the rover data
-      const rover = await this.getRoverData(this.#state.selectedName);
+      const rover = await this.getRoverData(selectedName);
       // update the state
       this.updateSate(this.#state, { rover, isLoading: false });
     } catch (error) {
       // set show error
       errorState.showError = true;
       // set the error message
-      if (this.#state.selectedName.toLocaleLowerCase() === 'home') errorState.dayMessage = error.message;
+      if (selectedName.toLowerCase() === 'home') errorState.dayMessage = error.message;
       else errorState.roverMessage = error.message;
 
       // update the state
@@ -142,7 +144,7 @@ class App {
 
   // generate the application
   // eslint-disable-next-line class-methods-use-this
-  generate = function (currentState) {
+  generate(currentState) {
     // get currentState values
     const {
       names, selectedName, rover, day, sidebarOpen, isLoading, error,
@@ -154,14 +156,14 @@ class App {
       ${Header(names, selectedName)}
       ${selectedName.toLowerCase() === 'home' ? Day(day, error, isLoading) : Rover(rover, error, isLoading)}
     `;
-  };
+  }
 
   // render the application
-  render = function (rootEl, currentState) {
+  render(rootEl, currentState) {
     // set the rooter element to the generated markup
     // eslint-disable-next-line no-param-reassign
     rootEl.innerHTML = this.generate(currentState);
-  };
+  }
 }
 
 // export
